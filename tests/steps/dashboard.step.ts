@@ -24,7 +24,9 @@ Before(async () => {
 
 Given("Usuário está na tela de dashboard", async function () {
   await page.goto("http://localhost:3000");
-  await expect(page.getByText("Dashboard")).toBeVisible();
+  const title = page.locator("h1");
+  await expect(title).toBeVisible();
+  await expect(await title.textContent()).toBe("Dashboard");
 });
 
 Then(
